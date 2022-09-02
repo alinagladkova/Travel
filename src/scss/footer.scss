@@ -1,0 +1,107 @@
+.footer {
+	background: url('../img/bg-footer.png') 0 0 / 100% 100% no-repeat;
+	height: 100%;
+	&__container {
+	}
+	&__block {
+	}
+	&__row {
+		display: flex;
+		justify-content: space-between;
+		@include adaptiveValue ("padding-top", 118, 57, 0);
+	}
+	&__logo {
+		flex: 0 1 19.3%;
+		font-family: 'Cardo';
+		align-items: flex-start;
+		@include adaptiveValue ("font-size", 63, 25, 0);
+		line-height: 63px;
+		font-weight: 700;
+		letter-spacing: -0.025em;
+		color: #232323;
+	}
+	&__links-block {
+		flex: 0 1 70.7%;
+	}
+	&__rights {
+		text-align: center;
+		color: #232323;
+		@include adaptiveValue ("font-size", 16, 14, 0);
+		@include adaptiveValue ("padding-top", 128, 40, 0);
+		@include adaptiveValue ("padding-bottom", 118, 40, 0);
+		letter-spacing: 0.02em;
+	}
+}
+.footer__rights:before {
+	background: url('../img/Scribble-Dark.svg');
+	position: absolute;
+	bottom: 0;
+	left: 0;
+} 
+.quick-links {
+	&__title {
+		@include adaptiveValue ("font-size", 25, 18, 0);
+		line-height: 50px;
+		font-weight: 900;
+		letter-spacing: -0.025em;
+		color: #232323;
+	}
+	&__table {
+		display: flex;
+		justify-content: space-between;
+		@include adaptiveValue ("margin-top", 30, 5, 0);
+	}
+	&__column {
+		display: flex;
+		flex-direction: column;
+	}
+	&__link {
+		@include adaptiveValue ("font-size", 20, 14, 0);
+		line-height: 50px;
+		font-weight: 400;
+		letter-spacing: -0.025em;
+		color: #232323;
+		@include adaptiveValue ("margin-top", 25, 10, 0);
+	}
+}
+.quick-links__link:hover {
+		font-weight: 700;
+}
+
+//Адаптив
+@media (max-width: 750px) {
+	.footer {
+		&__row {
+			flex-direction: column;
+		}
+	}
+}
+@media (max-width: 540px) {
+	.footer {
+		background: #c4c4c4;
+	}
+
+}
+@media (max-width: 500px) {
+	.quick-links {
+		&__column1 {
+			display: none;
+		}
+		&__column2 li:nth-child(2) {
+			display: none;
+		}
+		&__column3 li:nth-child(2) {
+			display: none;
+		}
+		&__column4 li:last-child {
+			display: none;
+		}
+	}
+}
+@media (max-width: 350px) {
+	.quick-links {
+		&__table {
+			flex-wrap: wrap;
+		}
+	}
+}

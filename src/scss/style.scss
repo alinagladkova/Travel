@@ -1,0 +1,689 @@
+@import "mixins.scss";
+//ШРИФТЫ
+@import url(https://fonts.googleapis.com/css?family=Lato:regular,900);
+@import url(https://fonts.googleapis.com/css?family=Cardo:regular,700);
+
+//@import "fonts";
+
+//ШРИФТ ПО УМОЛЧАНИЮ
+$fontfamily: "Lato";
+
+//ПЕРЕМЕННЫЕ
+$minwidth: 320;
+$maxWidth: 1440;
+$maxWidthContainer: 1215;
+$md1: $maxWidthContainer + 12;
+$md2: 991.98;
+$md3: 767.98;
+$md4: 479.98;
+
+
+//ОБНУЛЕНИЕ
+@import "null.scss";
+
+body {
+	
+}
+body._lock {
+	overflow: hidden;
+}
+
+//ОБОЛОЧКА
+.wrapper {
+	overflow: hidden;
+	min-height: 100%; //чтобы wrapper был на всю высоту
+	background-color: #e9e7e7;
+}
+
+//ОСНОВНАЯ СЕТКА
+
+//упрощенное
+._container {
+	max-width: 1215px;
+	padding: 0 15px; //задаем отступы по 15px чтобы контейнер не ударялся о края странички
+	margin: 0px auto; //центровка контейнера
+}
+
+//ПОДКЛЮЧЕНИЕ ФАЙЛОВ СТИЛЕЙ СТРАНИЦ И ЭЛЕМЕНТОВ
+@import "ui.scss";
+@import "header.scss";
+@import "footer.scss";
+@import "swiper.scss";
+@import "swiper2.scss";
+
+//==================================================================
+//ОСНОВНОЙ БЛОК
+.page {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+}
+.mainscreen {
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	background: url('../img/bg1.png') 0 0/100% 100% no-repeat;
+	&__container {
+		display:flex;
+		justify-content: space-between;
+		@include adaptiveValue ("padding-bottom", 159, 39, 0);
+	}
+	&__column1 {
+		flex: 0 1 36.7%;
+	}
+	&__column2 {
+		flex: 0 1 54.4%;
+	}
+	&__image {
+		height: 100%;
+		width: 100%;
+	}
+}
+.mainscreen-body {
+	&__title {
+		font-family: 'Cardo';
+		@include adaptiveValue ("font-size", 81, 24, 0);
+		@include adaptiveValue ("line-height", 81, 24, 0);
+		font-weight: 700;
+		letter-spacing: -0.025em;
+		color: #232323;
+		@include adaptiveValue ("margin-bottom", 34, 14, 0);
+	}
+	&__text {
+		@include adaptiveValue ("font-size", 17, 14, 0);
+		line-height: 1.2;
+		font-weight: 400;
+		letter-spacing: -0.025em;
+		color: #232323;
+		@include adaptiveValue ("margin-bottom", 43, 24, 0);
+	}
+}
+.btn {
+	cursor: pointer;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		@include adaptiveValue ("width", 256, 156, 0);
+		@include adaptiveValue ("height", 54, 27, 0);
+		background-color: #232323;
+		border-radius: 5px;
+		@include adaptiveValue ("font-size", 21, 14, 0);
+		line-height: 1.2;
+		@include adaptiveValue ("font-weight", 700, 400, 0);
+		letter-spacing: -0.025em;
+		color: #e9e7e7;
+}
+.mainscreen-body__button:hover {
+	box-shadow: 7px 5px 5px rgba(0, 0, 0, 0.4);
+}
+//==================================================================
+//My Travel Logs (2)
+.travelog {
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	background: url('../img/bg2.png') 0 0/100% 100% no-repeat;
+	&__container {
+	}
+}
+.travelog-block {
+	text-align: center;
+	@include adaptiveValue ("width", 445, 200, 0);
+	margin: 0 auto;
+	@include adaptiveValue ("padding-top", 52, 22, 0);
+	@include adaptiveValue ("padding-bottom", 52, 22, 0);
+	&__title {
+		font-family: 'Cardo';
+		@include adaptiveValue ("font-size", 55, 20, 0);
+		@include adaptiveValue ("line-height", 55, 20, 0);
+		font-weight: 700;
+		letter-spacing: -0.025em;
+		color: #e9e7e7;
+	}
+	&__text {
+		@include adaptiveValue ("margin-top", 33, 13, 0);
+		@include adaptiveValue ("margin-bottom", 38, 18, 0);
+		@include adaptiveValue ("font-size", 17, 14, 0);
+		line-height: 1.2;
+		font-weight: 400;
+		letter-spacing: -0.025em;
+		color: #e9e7e7;
+	}
+}
+.travelog-block {
+	&__button {
+		margin: 0 auto;
+		justify-content: center;
+		border: solid #e9e7e7;
+		@include adaptiveValue ("font-size", 21, 14, 0);
+		line-height: 1.2;
+		font-weight: 700;
+		letter-spacing: -0.025em;
+		color: #e9e7e7;
+	}
+}
+.travelog-block__button:hover {
+	box-shadow: 7px 5px 5px rgba(255, 255, 255, 0.3);
+}
+//==================================================================
+//Карточки
+.options {
+	height: 100%;
+	background: url('../img/bg3.png') 0 0/100% 100% no-repeat;
+	&__container {
+		padding: 0 30px;
+	}
+}
+.options-block {
+	display: flex;
+	justify-content: space-between;
+	@include adaptiveValue ("padding-top", 168, 66, 0);
+	@include adaptiveValue ("padding-bottom", 168, 66, 0);
+	&__card {
+	}
+}
+.card-option {
+	@include adaptiveValue ("margin-right", 55, 15, 0);
+	margin-bottom: 5px;
+	&__image {
+		img {
+			max-width: 100%;
+		}
+	}
+	&__title {
+		margin-right: 27%;
+		font-family: 'Cardo';
+		@include adaptiveValue ("font-size", 36, 16, 0);
+		@include adaptiveValue ("line-height", 36, 23, 0);
+		font-weight: 700;
+		letter-spacing: -0.025em;
+		color: #232323;
+	}
+	&__text {
+		@include adaptiveValue ("margin-top", 36, 16, 0);
+		@include adaptiveValue ("font-size", 17, 12, 0);
+		line-height: 1.2;
+		font-weight: 400;
+		letter-spacing: -0.025em;
+		color: #232323;
+	}
+}
+.card-option:last-child {
+	margin-right: 0;
+}
+.card-option__image:after {
+	content: '';
+	display: block;
+	@include adaptiveValue ("margin-bottom", 28, 8, 0);
+	@include adaptiveValue ("margin-top", 31, 11, 0);
+	width: 52px;
+	@include adaptiveValue ("height", 3, 1, 0);
+	background-color: #232323;
+}
+//==================================================================
+//Moto
+.moto {
+	height: 100%;
+	background: url('../img/bg4.png') 0 0/100% 100% no-repeat;
+	&__container {
+	}
+}
+.moto-block {
+	text-align: center;
+	@include adaptiveValue ("width", 775, 225, 0);
+	margin: 0 auto;
+	@include adaptiveValue ("padding-top", 190, 10, 0);
+	@include adaptiveValue ("padding-bottom", 270, 80, 0);
+	&__logo {
+		@include adaptiveValue ("width", 73, 38, 0);
+		margin: 0 auto;
+		img {
+			max-width: 100%;
+		}
+	}
+	&__title {
+		display: inline-block;
+		@include adaptiveValue ("margin-top", 62, 22, 0);
+		@include adaptiveValue ("margin-bottom", 62, 22, 0);
+		font-family: 'Cardo';
+		@include adaptiveValue ("font-size", 98, 30, 0);
+		@include adaptiveValue ("line-height", 97, 30, 0);
+		font-weight: 700;
+		letter-spacing: -0.025em;
+		color: #232323;
+		span {
+			font-style: italic;
+			text-decoration: underline;
+		}
+	}
+	&__text {
+		@include adaptiveValue ("font-size", 25, 14, 0);
+		line-height: 1.2;
+		font-weight: 900;
+		letter-spacing: -0.025em;
+		color: #232323;
+		@include adaptiveValue ("padding-bottom", 50, 20, 0);
+	}
+}
+//==================================================================
+//Choose
+
+.choose {
+	height: 100%;
+	background: url('../img/bg5.png') 0 0/100% 100% no-repeat;
+}
+.choose-block {
+	@include adaptiveValue ("padding-top", 155, 55, 0);
+	@include adaptiveValue ("padding-bottom", 155, 55, 0);
+	&__container {
+		display: flex;
+	}
+	&__content {
+		@include adaptiveValue ("width", 450, 50, 0);
+	}
+	&__title {
+		font-family: 'Cardo';
+		@include adaptiveValue ("font-size", 55, 25, 0);
+		@include adaptiveValue ("line-height", 50, 25, 0);
+		font-weight: 700;
+		letter-spacing: -0.025em;
+		color: #e9e7e7;
+		@include adaptiveValue ("margin-bottom", 105, -70, 0);
+	}
+	&__first {
+		@include adaptiveValue ("margin-bottom", 60, 10, 0);
+	}
+	&__subtitle {
+		@include adaptiveValue ("font-size", 25, 18, 0);
+		line-height: 1.2;
+		font-weight: 900;
+		letter-spacing: -0.025em;
+		color: #e9e7e7;
+		@include adaptiveValue ("margin-bottom", 20, 10, 0);
+	}
+	&__text {
+		@include adaptiveValue ("font-size", 17, 14, 0);
+		line-height: 1.2;
+		font-weight: 400;
+		letter-spacing: -0.025em;
+		color: #e9e7e7;
+	}
+	&__second {
+	}
+	&__image {	
+		@include adaptiveValue ("width", 757, 457, 0);
+		@include adaptiveValue ("height", 562, 262, 0);
+		position: absolute;
+		right: 0;
+		img {
+			min-width: 100%;
+		}
+	}
+}
+//==================================================================
+//Advantages
+
+.advantages {
+	height: 100%;
+	&__container {
+	}
+}
+.advantages-block {
+	display: flex;
+	justify-content: space-between;
+	@include adaptiveValue ("margin-bottom", 176, 36, 0);
+	@include adaptiveValue ("margin-top", 263, 100, 0);
+	&__content {
+		flex: 0 1 62%;
+		margin-right: 15px;
+	}
+	&__title {
+		font-family: 'Cardo';
+		@include adaptiveValue ("font-size", 82, 36, 0);
+		@include adaptiveValue ("line-height", 81, 35, 0);
+		font-weight: 700;
+		letter-spacing: -0.025em;
+		color: #232323;
+		display: inline-block;
+		@include adaptiveValue ("margin-bottom", 85, 35, 0);
+	}
+	&__lines {
+	}
+	&__text {
+		@include adaptiveValue ("font-size", 16, 14, 0);
+		line-height: 1.2;
+		font-weight: 400;
+		letter-spacing: -0.025em;
+		color: #232323;
+		@include adaptiveValue ("margin-left", 40, 10, 0);
+		@include adaptiveValue ("margin-right", 150, 50, 0);
+		display: flex;
+		align-items: center;
+	}
+	&__image {
+		flex: 0 1 32%;
+		height: 100%;
+		width: 100%;
+		img {
+			min-width: 100%;
+		}
+	}
+	&__table {
+		display: flex;
+		margin: 5px 0;
+	}
+	&__parallel {
+		display: inline-flex;
+		height: 3px;
+		width: 100%;
+		background-color: #232323;
+	}
+	&__cross {
+		font-size: 40px;
+		margin-right: 10px;
+		cursor: pointer;
+	}
+}
+.lines-block {
+	&__line {
+	}
+}
+.advantages-block__cross:hover {
+	text-shadow:#232323 3px 3px 5px;
+}
+.advantages-block__cross:active {
+	color: #e9e7e7;
+}
+
+//==================================================================
+//Update
+.update {
+	@include adaptiveValue ("margin-top", 115, 35, 0);
+	@include adaptiveValue ("margin-bottom", 214, 37, 0);
+	height: 100%;
+	&__container {
+	}
+}
+
+.update-block {
+display: flex;
+justify-content: space-between;
+	&__input {
+		flex: 0 1 38%;
+	}
+	&__image {
+		flex: 0 1 55%;
+		@include adaptiveValue ("height", 730, 365, 0);
+		img {
+			height: 100%;
+		}
+	}
+}
+.input-block {
+	margin-right: 10px;
+	&__title {
+		font-family: 'Cardo';
+		@include adaptiveValue ("font-size", 81, 26, 0);
+		@include adaptiveValue ("line-height", 81, 26, 0);
+		font-weight: 700;
+		letter-spacing: -0.025em;
+		color: #232323;
+		@include adaptiveValue ("margin-bottom", 36, 15, 0);
+	}
+	&__firstname {
+		border: 3px solid #232323;
+		border-radius: 5px;
+		font-weight: 400;
+		color: #232323;
+		@include adaptiveValue ("margin-bottom", 23, 10, 0);
+	}
+	&__lastname {
+		border: 3px solid #232323;
+		border-radius: 5px;
+		font-weight: 400;
+		color: #232323;
+		@include adaptiveValue ("margin-bottom", 23, 10, 0);
+	}
+	&__email {
+		border: 3px solid #232323;
+		border-radius: 5px;
+		font-weight: 400;
+		color: #232323;
+		@include adaptiveValue ("margin-bottom", 23, 10, 0);
+	}
+	&__info {
+		border: 3px solid #232323;
+		border-radius: 5px;
+		font-weight: 400;
+		color: #232323;
+		@include adaptiveValue ("height", 226, 100, 0);
+		@include adaptiveValue ("margin-bottom", 58, 10, 0);
+		textarea {
+			font-family: 'Lato';
+			width: 100%;
+			height: 100%;
+			background-color: #e9e7e7;
+			padding: 20px 31px;
+			@include adaptiveValue ("font-size", 21, 14, 0);
+			@include adaptiveValue ("line-height", 20, 14, 0);
+			max-width: 458px;
+			max-height: 220px;
+		}
+	}
+	&__btn {
+		cursor: pointer;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		@include adaptiveValue ("width", 454, 156, 0);
+		@include adaptiveValue ("height", 66, 27, 0);
+		background-color: #232323;
+		border-radius: 5px;
+		@include adaptiveValue ("font-size", 25, 14, 0);
+		line-height: 1.2;
+		font-weight: 400;
+		color: #e9e7e7;
+	}
+}
+.input-block {
+	input {
+		width: 100%;
+		height: 100%;
+		background-color: #e9e7e7;
+		padding: 15px 31px;
+		@include adaptiveValue ("font-size", 21, 14, 0);
+		@include adaptiveValue ("line-height", 16, 14, 0);
+	}
+}
+.input-block__btn:hover {
+	box-shadow: 7px 5px 5px rgba(0, 0, 0, 0.4);
+}
+//==================================================================
+//Адаптив
+@media (max-width: 900px) {
+	.mainscreen {
+		background: url('../img/bg1.png') 0 0/auto 100%  no-repeat;
+	}
+	.choose-block {
+		background: url('../img/picture3.png') center/100% auto no-repeat;
+		&__image {	
+			display: none;
+		}
+		&__content {
+			@include adaptiveValue ("width", 450, 340, 0);
+		}
+		&__title {
+			@include adaptiveValue ("font-size", 55, 22, 0);
+			color: #232323;
+			@include adaptiveValue ("margin-bottom", 105, -20, 0);
+		}
+		&__subtitle {
+			color: #232323;
+			@include adaptiveValue ("font-size", 25, 16, 0);
+		}
+		&__text {
+			color: #232323;
+		}
+		&__second {
+			padding-bottom: 100px;
+		}
+	}
+	.advantages-block {
+		@include adaptiveValue ("margin-bottom", 176, 10, 0);
+		@include adaptiveValue ("margin-top", 263, 10, 0);
+		&__content {
+			flex: 0 1 80%;
+			margin-right: -100%;
+			z-index: 2;
+		}
+		&__title {
+			@include adaptiveValue ("margin-bottom", 85, 35, 0);
+			width: 50%;
+		}
+		&__image {
+			flex: 0 1 50%;
+			width: 195px;
+			height: 258px;
+			img {
+				min-width: 50%;
+				height: 100%;
+			}
+		}
+		&__cross {
+			font-size: 30px;
+		}
+	}
+}
+@media (max-width: 650px) {
+	.page {
+		margin-top: 80px;
+	}
+	.travelog {
+		background: #232323;
+	}
+	.choose-block {
+		background: none;
+		&__image {	
+			display: flex;
+			@include adaptiveValue ("width", 757, 107, 0);
+			@include adaptiveValue ("height", 562, 62, 0);
+		}
+		&__container {
+		}
+		&__content {
+			@include adaptiveValue ("width", 450, 200, 0);
+		}
+		&__title {
+			color: #e9e7e7;
+			@include adaptiveValue ("margin-bottom", 105, 0, 0);
+		}
+		&__subtitle {
+			color: #e9e7e7;
+		}
+		&__text {
+			color: #e9e7e7;
+		}
+		&__second {
+			padding-bottom: 0;
+		}
+	}
+	.input-block {
+		input {
+			@include adaptiveValue ("padding-top", 18, 5, 0);
+			@include adaptiveValue ("padding-bottom", 18, 5, 0);
+			@include adaptiveValue ("padding-left", 31, 10, 0);
+			@include adaptiveValue ("padding-right", 31, 10, 0);
+		}
+		textarea {
+			@include adaptiveValue ("padding-top", 20, 5, 0);
+			@include adaptiveValue ("padding-bottom", 20, 5, 0);
+			@include adaptiveValue ("padding-left", 31, 10, 0);
+			@include adaptiveValue ("padding-right", 31, 10, 0);
+		}
+	}
+}
+@media (max-width: 500px) {
+	.mainscreen {
+		&__container {
+			display:flex;
+			flex-direction: column;
+		}
+		&__image {
+			margin-top: 20px;
+			@include adaptiveValue ("height", 259, 189, 0);
+			img {
+			height: 100%;
+			}
+		}
+	}
+	.options {
+		&__container {
+			padding: 0 15px;
+		}
+	}
+	.card-option {
+		margin: 0 0 15px 15px;
+	}
+	.choose-block {
+		background: none;
+		&__image {	
+			display: flex;
+			position: relative;
+			@include adaptiveValue ("width", 757, 257, 0);
+			@include adaptiveValue ("height", 562, 162, 0);
+		}
+		&__container {
+			flex-direction: column;
+		}
+		&__content {
+			width: 100%;
+			margin-bottom: 15px;
+		}
+		&__title {
+			color: #e9e7e7;
+			@include adaptiveValue ("margin-bottom", 105, 20, 0);
+		}
+		&__subtitle {
+			color: #e9e7e7;
+		}
+		&__text {
+			color: #e9e7e7;
+		}
+	}
+	.advantages-block {
+		&__image {
+			width: 195px;
+			height: 139px;
+			img {
+				min-width: 50%;
+				height: 100%;
+			}
+		}
+		&__title {
+			@include adaptiveValue ("font-size", 82, 24, 0);
+			@include adaptiveValue ("line-height", 81, 26, 0);
+			@include adaptiveValue ("margin-bottom", 85, 25, 0);
+		}
+	}
+	.update-block {
+		&__image {
+			display: none;
+		}
+		&__input {
+			flex: 0 1 100%;
+		}
+	}
+}
+
+
+
+
+
+
+
+
+

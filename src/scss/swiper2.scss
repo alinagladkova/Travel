@@ -1,0 +1,136 @@
+.feedback {
+	height: 100%;
+	width: 100%;
+	background: url('../img/bg6.png') 0 0/100% 100% no-repeat;
+	padding-top: 60px;
+	&__container {
+		text-align: center;
+	}
+	&__title {
+		display: inline-block;
+		font-family: 'Cardo';
+		@include adaptiveValue ("font-size", 82, 26, 0);
+		@include adaptiveValue ("line-height", 84, 24, 0);
+		font-weight: 700;
+		letter-spacing: -0.025em;
+		color: #232323;
+		justify-content: center;
+		@include adaptiveValue ("margin-bottom", 65, 25, 0);
+		width: 51%;
+	}
+}
+.feedback-slider {
+	display: flex;
+	position: relative;
+	@include adaptiveValue ("padding-bottom", 94, 120, 0);
+	&__slide {
+	}
+}
+.container {
+}
+.feedback-slide {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	min-width: 0;
+	&__column {
+		display: inline-block;
+		border: 3px solid #232323;
+		border-radius: 10px;
+		@include adaptiveValue ("padding-top", 72, 36, 0);
+		@include adaptiveValue ("padding-bottom", 72, 36, 0);
+		@include adaptiveValue ("padding-left", 30, 15, 0);
+		@include adaptiveValue ("padding-right", 30, 15, 0);
+		z-index: 1;
+	}
+}
+.slide-column {
+	display: inline-block;
+	margin: 0 10px;
+	&__icon {
+		margin-left: auto ;
+		margin-right: auto ;
+		@include adaptiveValue ("margin-bottom", 49, 25, 0);
+		@include adaptiveValue ("width", 135, 67, 0);
+		@include adaptiveValue ("height", 135, 67, 0);
+		img {
+			max-width: 100%;
+		}
+	}
+	&__content {
+	}
+}
+.content {
+}
+.content-subtitle {
+	@include adaptiveValue ("font-size", 25, 16, 0);
+	line-height: 1.2;
+	font-weight: 900;
+	letter-spacing: -0.025em;
+	color: #232323;
+	@include adaptiveValue ("margin-bottom", 24, 12, 0);
+}
+.content-text {
+	@include adaptiveValue ("font-size", 17, 14, 0);
+	line-height: 1.2;
+	font-weight: 400;
+	letter-spacing: -0.025em;
+	color: #6d6d6d;
+}
+.slick-track {
+	display: flex;
+}
+.slick-list {
+	overflow: hidden;
+}
+.feedback-slider .slick-arrow {
+	position: absolute;
+	top: 35%;
+	display: inline-block;
+	font-size: 0;
+	@include adaptiveValue ("width", 86, 29, 0);
+	@include adaptiveValue ("height", 76, 25, 0);
+	cursor: pointer;
+	@include adaptiveValue ("margin-left", -30, 0, 0);
+	@include adaptiveValue ("margin-right", -30, 0, 0);
+}
+
+.feedback-slider .slick-arrow.slick-prev {
+	left: 0;
+	background: url('../img/Arrow1.png')0 0/100% 100% no-repeat;
+	z-index: 2;
+}
+.feedback-slider .slick-arrow.slick-next {
+	right: 0;
+	background: url('../img/Arrow.png')0 0/100% 100% no-repeat;
+}
+.feedback-slider .slick-arrow.slick-prev:hover {
+	box-shadow: 7px 5px 5px rgba(0, 0, 0, 0.4);
+	border-radius: 15%;
+}
+.feedback-slider .slick-arrow.slick-next:hover {
+	box-shadow: -7px 5px 5px rgba(0, 0, 0, 0.4);
+	border-radius: 15%;
+}
+//==================================================================
+//Адаптив
+@media (max-width: 1200px) {
+	.feedback-slider .slick-arrow {
+		margin: 0 1px;
+	}
+}
+@media (max-width: 900px) {
+	.feedback-slider .slick-arrow {
+		@include adaptiveValue ("margin-left", -30, 0, 0);
+		@include adaptiveValue ("margin-right", -30, 0, 0);
+	}
+}
+@media (max-width: 500px) {
+.feedback-slider {
+	@include adaptiveValue ("padding-bottom", 84, 90, 0);
+}
+}
+
+
+
+

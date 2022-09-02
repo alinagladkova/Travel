@@ -1,0 +1,187 @@
+.place {
+	&__container {
+		position: relative;
+		@include adaptiveValue ("margin-bottom", 48, 38, 0);
+	}
+}
+.places-slider {
+	&__wrapper {
+	}
+	&__slide {
+		display: flex;
+		justify-content: space-between;
+		@include adaptiveValue ("height", 776, 276, 0);
+		width: 100%;
+	}
+}
+.swiper-container {
+}
+.swiper-wrapper {
+}
+.swiper-slide {
+	&__image {
+		position: relative;
+		text-align: center;
+		@include adaptiveValue ("height", 776, 476, 0);
+		@include adaptiveValue ("width", 564, 264, 0);
+		//width: 564px;
+		//height: 776px;
+		img {
+			max-width: 100%;
+		}
+	}
+	&__description {
+		display: flex;
+	flex-direction: column;
+	}
+}
+.description {
+	display: flex;
+	flex: 0 1 50%;
+	flex-direction: column;
+}
+.description-image {
+	@include adaptiveValue ("margin-bottom", 78, 38, 0);
+	@include adaptiveValue ("height", 322, 22, 0);
+	@include adaptiveValue ("width", 418, 118, 0);
+	//width: 418px;
+	//height: 322px;
+		img {
+			max-width: 100%;
+		}
+}
+.description-content {
+	display: flex;
+	justify-content: space-between;
+	&__title {
+		flex: 0 1 100%;
+		font-family: 'Cardo';
+		@include adaptiveValue ("font-size", 36, 18, 0);
+		@include adaptiveValue ("line-height", 50, 20, 0);
+		font-weight: 700;
+		text-decoration: underline;
+		letter-spacing: -0.025em;
+		color: #232323;
+	}
+	&__text {
+		flex: 0 1 120%;
+		@include adaptiveValue ("font-size", 17, 12, 0);
+		line-height: 1.2;
+		font-weight: 400;
+		letter-spacing: -0.025em;
+		color: #232323;
+		p{
+			@include adaptiveValue ("margin-bottom", 25, 5, 0);
+		}
+	}
+}
+.swiper-button-next {
+	position: absolute;
+	display: inline-flex;
+	height: 3px;
+	@include adaptiveValue ("width", 139, 19, 0);
+	@include adaptiveValue ("top", 700, 350, 0);
+	background-color: #232323;
+	margin-right: 10px;
+	cursor: pointer;
+	z-index: 1;
+}
+.place__container::before {
+	content: "";
+	position: absolute;
+	width: 71px;
+	height: 254px;
+	opacity: 0.7;
+	top: 33%;
+	left: -2%;
+	z-index: 2;
+	background-image: url('../img/Tape.svg');
+	background-size: 71px 254px;
+}
+.swiper-button-next::after {
+	content: '';
+	position: absolute;
+}
+.swiper-button-next::after {
+	border-top: 3px solid #232323;
+	border-left: 3px solid #232323;
+	@include adaptiveValue ("width", 35, 15, 0);
+	@include adaptiveValue ("height", 35, 15, 0);
+	transform: rotate(135deg);
+	right: 3%;
+}
+
+//==================================================================
+//Адаптив
+@media (max-width: 850px) {
+	.swiper-slide__image {
+		margin-right: 5px;
+	}
+	.description-content__title {
+		margin-right: 5px;
+	}
+}
+@media (max-width: 650px) {
+	.places-slider {
+		&__container {
+			margin-bottom: 8px;
+		}
+	}
+	.swiper-slide__image {
+		display: none;
+	}
+	.description {
+		flex: 0 1 100%;
+	}
+	.swiper-slide {
+		@include adaptiveValue ("height", 776, 376, 0);
+	}
+	
+	.place__container::before {
+		width: 51px;
+		height: 204px;
+		top: 1%;
+		left: 0;
+		background-size: 51px 204px;
+	}
+	.description-image {
+		@include adaptiveValue ("height", 322, 122, 0);
+		@include adaptiveValue ("width", 418, 218, 0);
+	}
+	.description-content {
+		&__title {
+			flex: 0 1 50%;
+			@include adaptiveValue ("font-size", 36, 20, 0);
+			@include adaptiveValue ("line-height", 50, 20, 0);
+		}
+		&__text {
+			flex: 0 1 120%;
+			@include adaptiveValue ("font-size", 17, 14, 0);
+		}
+	}
+	.swiper-button-next {
+		@include adaptiveValue ("width", 139, 39, 0);
+		@include adaptiveValue ("top", 700, 310, 0);
+	}
+}
+@media (max-width: 520px) {
+	.description-content {
+		&__title {
+			@include adaptiveValue ("font-size", 36, 16, 0);
+		}
+	}
+	.place__container::before {
+		width: 31px;
+		height: 154px;
+		top: 1%;
+		left: 0;
+		background-size: 31px 154px;
+	}
+	.swiper-button-next {
+		@include adaptiveValue ("top", 700, 50, 0);
+	}
+	.description-image {
+		@include adaptiveValue ("margin-bottom", 78, 50, 0);
+	}
+}
+
