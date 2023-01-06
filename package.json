@@ -3,6 +3,7 @@
 	"version": "1.0.0",
 	"description": "сборка gulp",
 	"main": "gulpfile.js",
+	"homepage": "https://alinagladkova.github.io/Travel",
 	"type": "module",
 	"scripts": {
 		"dev": "gulp",
@@ -21,6 +22,7 @@
 	"devDependencies": {
 		"browser-sync": "latest",
 		"del": "latest",
+		"gh-pages": "^4.0.0",
 		"gulp": "latest",
 		"gulp-autoprefixer": "latest",
 		"gulp-clean-css": "latest",
