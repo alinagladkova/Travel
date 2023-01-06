@@ -1,7 +1,8 @@
 @import "mixins.scss";
 //ШРИФТЫ
-@import url(https://fonts.googleapis.com/css?family=Lato:regular,900);
+@import url(https://fonts.googleapis.com/css?family=Lato:300,regular,700,900);
 @import url(https://fonts.googleapis.com/css?family=Cardo:regular,700);
+
 
 //@import "fonts";
 
@@ -22,7 +23,7 @@ $md4: 479.98;
 @import "null.scss";
 
 body {
-	
+	font-display: swap;
 }
 body._lock {
 	overflow: hidden;
@@ -33,13 +34,14 @@ body._lock {
 	overflow: hidden;
 	min-height: 100%; //чтобы wrapper был на всю высоту
 	background-color: #e9e7e7;
+	
 }
 
 //ОСНОВНАЯ СЕТКА
 
 //упрощенное
 ._container {
-	max-width: 1215px;
+	max-width: 1230px;
 	padding: 0 15px; //задаем отступы по 15px чтобы контейнер не ударялся о края странички
 	margin: 0px auto; //центровка контейнера
 }
@@ -49,7 +51,7 @@ body._lock {
 @import "header.scss";
 @import "footer.scss";
 @import "swiper.scss";
-@import "swiper2.scss";
+@import "slick-slider.scss";
 
 //==================================================================
 //ОСНОВНОЙ БЛОК
@@ -65,32 +67,33 @@ body._lock {
 	height: 100%;
 	top: 0;
 	left: 0;
-	background: url('../img/bg1.png') 0 0/100% 100% no-repeat;
+	background: url('../img/bg1.png') 0 0/cover no-repeat;
 	&__container {
 		display:flex;
 		justify-content: space-between;
 		@include adaptiveValue ("padding-bottom", 159, 39, 0);
 	}
-	&__column1 {
+	&__info {
 		flex: 0 1 36.7%;
 	}
-	&__column2 {
-		flex: 0 1 54.4%;
-	}
 	&__image {
-		height: 100%;
-		width: 100%;
+		flex: 0 1 55.2%;
+		height: 419px;
+		width: 662px;
+		img {
+			max-width: 100%;
+			object-fit: cover;
+		}
 	}
 }
-.mainscreen-body {
+.info {
 	&__title {
 		font-family: 'Cardo';
 		@include adaptiveValue ("font-size", 81, 24, 0);
-		@include adaptiveValue ("line-height", 81, 24, 0);
 		font-weight: 700;
 		letter-spacing: -0.025em;
 		color: #232323;
-		@include adaptiveValue ("margin-bottom", 34, 14, 0);
+		@include adaptiveValue ("margin-bottom", 20, 14, 0);
 	}
 	&__text {
 		@include adaptiveValue ("font-size", 17, 14, 0);
@@ -98,25 +101,31 @@ body._lock {
 		font-weight: 400;
 		letter-spacing: -0.025em;
 		color: #232323;
-		@include adaptiveValue ("margin-bottom", 43, 24, 0);
+		@include adaptiveValue ("margin-bottom", 34, 24, 0);
+	}
+	&__button {
 	}
 }
 .btn {
 	cursor: pointer;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		@include adaptiveValue ("width", 256, 156, 0);
-		@include adaptiveValue ("height", 54, 27, 0);
-		background-color: #232323;
-		border-radius: 5px;
-		@include adaptiveValue ("font-size", 21, 14, 0);
-		line-height: 1.2;
-		@include adaptiveValue ("font-weight", 700, 400, 0);
-		letter-spacing: -0.025em;
-		color: #e9e7e7;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	@include adaptiveValue ("padding-top", 18, 10, 0);
+	@include adaptiveValue ("padding-bottom", 18, 10, 0);
+	@include adaptiveValue ("padding-right", 57, 27, 0);
+	@include adaptiveValue ("padding-left", 57, 27, 0);
+	background-color: #1e1e1e;
+	border-radius: 5px;
+	@include adaptiveValue ("font-size", 21, 16, 0);
+	line-height: 1.2;
+	@include adaptiveValue ("font-weight", 700, 400, 0);
+	letter-spacing: -0.025em;
+	color: #e9e7e7;
+	font-weight: 700;
 }
-.mainscreen-body__button:hover {
+
+.info__button:hover {
 	box-shadow: 7px 5px 5px rgba(0, 0, 0, 0.4);
 }
 //==================================================================
@@ -156,42 +165,35 @@ body._lock {
 }
 .travelog-block {
 	&__button {
-		margin: 0 auto;
-		justify-content: center;
 		border: solid #e9e7e7;
-		@include adaptiveValue ("font-size", 21, 14, 0);
-		line-height: 1.2;
-		font-weight: 700;
-		letter-spacing: -0.025em;
-		color: #e9e7e7;
 	}
 }
 .travelog-block__button:hover {
 	box-shadow: 7px 5px 5px rgba(255, 255, 255, 0.3);
 }
 //==================================================================
-//Карточки
+//Cards (3)
 .options {
 	height: 100%;
 	background: url('../img/bg3.png') 0 0/100% 100% no-repeat;
 	&__container {
-		padding: 0 30px;
 	}
 }
 .options-block {
 	display: flex;
 	justify-content: space-between;
-	@include adaptiveValue ("padding-top", 168, 66, 0);
+	@include adaptiveValue ("padding-top", 168, 20, 0);
 	@include adaptiveValue ("padding-bottom", 168, 66, 0);
 	&__card {
+		flex-basis: 30.25%;
+		margin-bottom: 5px;
 	}
 }
-.card-option {
-	@include adaptiveValue ("margin-right", 55, 15, 0);
-	margin-bottom: 5px;
+.card {
 	&__image {
 		img {
 			max-width: 100%;
+			object-fit: cover;
 		}
 	}
 	&__title {
@@ -210,12 +212,10 @@ body._lock {
 		font-weight: 400;
 		letter-spacing: -0.025em;
 		color: #232323;
+		text-align: justify;
 	}
 }
-.card-option:last-child {
-	margin-right: 0;
-}
-.card-option__image:after {
+.card__image:after {
 	content: '';
 	display: block;
 	@include adaptiveValue ("margin-bottom", 28, 8, 0);
@@ -225,7 +225,7 @@ body._lock {
 	background-color: #232323;
 }
 //==================================================================
-//Moto
+//Moto (4)
 .moto {
 	height: 100%;
 	background: url('../img/bg4.png') 0 0/100% 100% no-repeat;
@@ -243,21 +243,23 @@ body._lock {
 		margin: 0 auto;
 		img {
 			max-width: 100%;
+			@include adaptiveValue ("width", 73, 38, 0);
 		}
 	}
 	&__title {
 		display: inline-block;
-		@include adaptiveValue ("margin-top", 62, 22, 0);
+		@include adaptiveValue ("margin-top", 60, 20, 0);
 		@include adaptiveValue ("margin-bottom", 62, 22, 0);
 		font-family: 'Cardo';
 		@include adaptiveValue ("font-size", 98, 30, 0);
 		@include adaptiveValue ("line-height", 97, 30, 0);
 		font-weight: 700;
 		letter-spacing: -0.025em;
-		color: #232323;
+		color: #000;
 		span {
 			font-style: italic;
 			text-decoration: underline;
+			@include adaptiveValue ("text-decoration-thickness", 5, 2, 0);
 		}
 	}
 	&__text {
@@ -270,7 +272,7 @@ body._lock {
 	}
 }
 //==================================================================
-//Choose
+//Choose (5)
 
 .choose {
 	height: 100%;
@@ -288,16 +290,17 @@ body._lock {
 	&__title {
 		font-family: 'Cardo';
 		@include adaptiveValue ("font-size", 55, 25, 0);
-		@include adaptiveValue ("line-height", 50, 25, 0);
+		@include adaptiveValue ("line-height", 55, 25, 0);
 		font-weight: 700;
 		letter-spacing: -0.025em;
 		color: #e9e7e7;
-		@include adaptiveValue ("margin-bottom", 105, -70, 0);
+		@include adaptiveValue ("margin-bottom", 94, -70, 0);
 	}
-	&__first {
-		@include adaptiveValue ("margin-bottom", 60, 10, 0);
+	&__paragraph {
+		@include adaptiveValue ("margin-bottom", 54, 10, 0);
 	}
 	&__subtitle {
+		display: inline-block;
 		@include adaptiveValue ("font-size", 25, 18, 0);
 		line-height: 1.2;
 		font-weight: 900;
@@ -312,8 +315,6 @@ body._lock {
 		letter-spacing: -0.025em;
 		color: #e9e7e7;
 	}
-	&__second {
-	}
 	&__image {	
 		@include adaptiveValue ("width", 757, 457, 0);
 		@include adaptiveValue ("height", 562, 262, 0);
@@ -321,24 +322,27 @@ body._lock {
 		right: 0;
 		img {
 			min-width: 100%;
+			object-fit: cover;
 		}
 	}
 }
+.paragraph2 {
+	margin-bottom: 0;
+}
 //==================================================================
-//Advantages
-
-.advantages {
+//Description (6)
+.description {
 	height: 100%;
 	&__container {
 	}
 }
-.advantages-block {
+.description-block {
 	display: flex;
 	justify-content: space-between;
 	@include adaptiveValue ("margin-bottom", 176, 36, 0);
 	@include adaptiveValue ("margin-top", 263, 100, 0);
-	&__content {
-		flex: 0 1 62%;
+	&__spoiler {
+		flex: 0 1 61%;
 		margin-right: 15px;
 	}
 	&__title {
@@ -351,64 +355,73 @@ body._lock {
 		display: inline-block;
 		@include adaptiveValue ("margin-bottom", 85, 35, 0);
 	}
-	&__lines {
+	&__item {
 	}
 	&__text {
+		position: relative;
 		@include adaptiveValue ("font-size", 16, 14, 0);
 		line-height: 1.2;
 		font-weight: 400;
 		letter-spacing: -0.025em;
 		color: #232323;
-		@include adaptiveValue ("margin-left", 40, 10, 0);
-		@include adaptiveValue ("margin-right", 150, 50, 0);
+		@include adaptiveValue ("padding-left", 40, 10, 0);
+		@include adaptiveValue ("padding-right", 150, 50, 0);
+		@include adaptiveValue ("padding-top", 20, 5, 0);
+		@include adaptiveValue ("padding-bottom", 20, 5, 0);
 		display: flex;
 		align-items: center;
+		border-bottom: 3px solid #232323;
+	}
+	&__dropdown {
+		display: none;
+		@include adaptiveValue ("font-size", 16, 14, 0);
+		line-height: 1.2;
+		font-weight: 400;
+		letter-spacing: -0.025em;
+		color: #232323;
+		padding: 10px 5px;
+		border-bottom: 3px solid #232323;
 	}
 	&__image {
 		flex: 0 1 32%;
-		height: 100%;
-		width: 100%;
+		height: 516px;
 		img {
-			min-width: 100%;
+			max-width: 100%;
+			object-fit: cover;
 		}
 	}
-	&__table {
-		display: flex;
-		margin: 5px 0;
-	}
-	&__parallel {
-		display: inline-flex;
-		height: 3px;
-		width: 100%;
-		background-color: #232323;
-	}
-	&__cross {
-		font-size: 40px;
-		margin-right: 10px;
-		cursor: pointer;
-	}
 }
-.lines-block {
-	&__line {
-	}
+.description-block__text:before,
+.description-block__text:after {
+	content: '';
+	@include adaptiveValue ("width", 19, 10, 0);
+	@include adaptiveValue ("height", 3, 1, 0);
+	background-color: #000;
+	position: absolute;
+	left: 90%;
 }
-.advantages-block__cross:hover {
-	text-shadow:#232323 3px 3px 5px;
+.description-block__text:before {
+	transform: rotate(90deg);
 }
-.advantages-block__cross:active {
-	color: #e9e7e7;
+.description-block__text.active:before {
+	transform: rotate(135deg);
 }
-
+.description-block__text.active:after {
+	transform: rotate(45deg);
+}
+.above {
+	border-top: 3px solid #232323;
+}
 //==================================================================
-//Update
+//Update (7)
+
 .update {
 	@include adaptiveValue ("margin-top", 115, 35, 0);
-	@include adaptiveValue ("margin-bottom", 214, 37, 0);
+	@include adaptiveValue ("margin-bottom", 214, 10, 0);
 	height: 100%;
 	&__container {
 	}
 }
-
 .update-block {
 display: flex;
 justify-content: space-between;
@@ -417,14 +430,13 @@ justify-content: space-between;
 	}
 	&__image {
 		flex: 0 1 55%;
-		@include adaptiveValue ("height", 730, 365, 0);
+		width: 666px;
+		height: 730px;
 		img {
-			height: 100%;
+			max-width: 100%;
+			object-fit: cover;
 		}
 	}
-}
-.input-block {
-	margin-right: 10px;
 	&__title {
 		font-family: 'Cardo';
 		@include adaptiveValue ("font-size", 81, 26, 0);
@@ -434,60 +446,43 @@ justify-content: space-between;
 		color: #232323;
 		@include adaptiveValue ("margin-bottom", 36, 15, 0);
 	}
-	&__firstname {
-		border: 3px solid #232323;
-		border-radius: 5px;
-		font-weight: 400;
-		color: #232323;
-		@include adaptiveValue ("margin-bottom", 23, 10, 0);
-	}
-	&__lastname {
-		border: 3px solid #232323;
-		border-radius: 5px;
-		font-weight: 400;
-		color: #232323;
-		@include adaptiveValue ("margin-bottom", 23, 10, 0);
-	}
-	&__email {
-		border: 3px solid #232323;
-		border-radius: 5px;
-		font-weight: 400;
-		color: #232323;
-		@include adaptiveValue ("margin-bottom", 23, 10, 0);
-	}
+}
+.input-block {
+	margin-right: 10px;
 	&__info {
 		border: 3px solid #232323;
 		border-radius: 5px;
-		font-weight: 400;
-		color: #232323;
-		@include adaptiveValue ("height", 226, 100, 0);
+		@include adaptiveValue ("height", 230, 100, 0);
 		@include adaptiveValue ("margin-bottom", 58, 10, 0);
+		height: 226px;
 		textarea {
-			font-family: 'Lato';
-			width: 100%;
 			height: 100%;
+			width: 100%;
+			resize: none;
 			background-color: #e9e7e7;
-			padding: 20px 31px;
+			padding: 20px 29px;
 			@include adaptiveValue ("font-size", 21, 14, 0);
 			@include adaptiveValue ("line-height", 20, 14, 0);
-			max-width: 458px;
 			max-height: 220px;
+			&::placeholder {
+				font-family: 'Lato';
+				font-weight: 400;
+				color: #232323;
+			}
 		}
 	}
-	&__btn {
-		cursor: pointer;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		@include adaptiveValue ("width", 454, 156, 0);
-		@include adaptiveValue ("height", 66, 27, 0);
-		background-color: #232323;
-		border-radius: 5px;
+	&__button {
+		width: 100%;
+		@include adaptiveValue ("padding-top", 23, 10, 0);
+		@include adaptiveValue ("padding-bottom", 24, 10, 0);
 		@include adaptiveValue ("font-size", 25, 14, 0);
-		line-height: 1.2;
 		font-weight: 400;
-		color: #e9e7e7;
 	}
+}
+.input-block__firstname, .input-block__lastname, .input-block__email {
+	border: 3px solid #232323;
+	border-radius: 5px;
+	@include adaptiveValue ("margin-bottom", 25, 10, 0);
 }
 .input-block {
 	input {
@@ -497,9 +492,13 @@ justify-content: space-between;
 		padding: 15px 31px;
 		@include adaptiveValue ("font-size", 21, 14, 0);
 		@include adaptiveValue ("line-height", 16, 14, 0);
+		&::placeholder {
+			font-weight: 400;
+			color: #232323;
+		}
 	}
 }
-.input-block__btn:hover {
+.input-block__button:hover {
 	box-shadow: 7px 5px 5px rgba(0, 0, 0, 0.4);
 }
 //==================================================================
@@ -532,29 +531,31 @@ justify-content: space-between;
 			padding-bottom: 100px;
 		}
 	}
-	.advantages-block {
-		@include adaptiveValue ("margin-bottom", 176, 10, 0);
-		@include adaptiveValue ("margin-top", 263, 10, 0);
-		&__content {
-			flex: 0 1 80%;
-			margin-right: -100%;
-			z-index: 2;
-		}
-		&__title {
-			@include adaptiveValue ("margin-bottom", 85, 35, 0);
-			width: 50%;
-		}
+	.description-block {
 		&__image {
-			flex: 0 1 50%;
-			width: 195px;
-			height: 258px;
-			img {
-				min-width: 50%;
-				height: 100%;
-			}
+			float: right;
 		}
-		&__cross {
-			font-size: 30px;
+		&__spoiler {
+			overflow: hidden;
+		}
+	}
+}
+@media (max-width: 800px) {
+	.input-block {
+		margin-right: 0px;
+	}
+	.description-block {
+		flex-direction: column;
+		&__image {
+			max-width: 100%;
+			margin: 30px auto 15px auto;
+		}
+	}
+	.update-block {
+		flex-direction: column;
+		&__image {
+			max-width: 100%;
+			margin: 15px auto;
 		}
 	}
 }
@@ -571,8 +572,6 @@ justify-content: space-between;
 			display: flex;
 			@include adaptiveValue ("width", 757, 107, 0);
 			@include adaptiveValue ("height", 562, 62, 0);
-		}
-		&__container {
 		}
 		&__content {
 			@include adaptiveValue ("width", 450, 200, 0);
@@ -591,19 +590,13 @@ justify-content: space-between;
 			padding-bottom: 0;
 		}
 	}
-	.input-block {
-		input {
-			@include adaptiveValue ("padding-top", 18, 5, 0);
-			@include adaptiveValue ("padding-bottom", 18, 5, 0);
-			@include adaptiveValue ("padding-left", 31, 10, 0);
-			@include adaptiveValue ("padding-right", 31, 10, 0);
-		}
-		textarea {
-			@include adaptiveValue ("padding-top", 20, 5, 0);
-			@include adaptiveValue ("padding-bottom", 20, 5, 0);
-			@include adaptiveValue ("padding-left", 31, 10, 0);
-			@include adaptiveValue ("padding-right", 31, 10, 0);
-		}
+}
+@media (max-width: 550px) {
+	.options-block {
+			flex-direction: column;
+			&__card {
+				margin: 0 0 15px 15px;
+			}
 	}
 }
 @media (max-width: 500px) {
@@ -611,22 +604,12 @@ justify-content: space-between;
 		&__container {
 			display:flex;
 			flex-direction: column;
+			justify-content: center;
 		}
 		&__image {
 			margin-top: 20px;
-			@include adaptiveValue ("height", 259, 189, 0);
-			img {
-			height: 100%;
-			}
+			max-width: 100%;
 		}
-	}
-	.options {
-		&__container {
-			padding: 0 15px;
-		}
-	}
-	.card-option {
-		margin: 0 0 15px 15px;
 	}
 	.choose-block {
 		background: none;
@@ -652,29 +635,6 @@ justify-content: space-between;
 		}
 		&__text {
 			color: #e9e7e7;
-		}
-	}
-	.advantages-block {
-		&__image {
-			width: 195px;
-			height: 139px;
-			img {
-				min-width: 50%;
-				height: 100%;
-			}
-		}
-		&__title {
-			@include adaptiveValue ("font-size", 82, 24, 0);
-			@include adaptiveValue ("line-height", 81, 26, 0);
-			@include adaptiveValue ("margin-bottom", 85, 25, 0);
-		}
-	}
-	.update-block {
-		&__image {
-			display: none;
-		}
-		&__input {
-			flex: 0 1 100%;
 		}
 	}
 }

@@ -7,6 +7,7 @@ import "./modules/burger.js";
 import "./modules/swiper.js";
 import "./modules/sliders.js";
 import "./modules/slick.min.js";
+import "./modules/spoiler.js";
 
 
 

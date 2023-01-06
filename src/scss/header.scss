@@ -1,16 +1,18 @@
 //ШАПКА
 .header {
+	position: relative;
 	top: 0;
 	left: 0;
 	width: 100%;
-	@include adaptiveValue ("height", 163, 63, 0);
+	background-color: #e9e7e7;
 	&__container {
 	}
 	&__row {
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		margin-top: 75px;
+		@include adaptiveValue ("padding-top", 78, 10, 0);
+		@include adaptiveValue ("padding-bottom", 106, 20, 0);
 	}
 	&__contact {
 	}
@@ -20,16 +22,18 @@
 		display: flex;
 		border: 3px solid #232323;
 		border-radius: 7px;
-		@include adaptiveValue ("width", 215, 100, 0);
-		@include adaptiveValue ("height", 55, 25, 0);
+		@include adaptiveValue ("padding-top", 15, 7, 0);
+		@include adaptiveValue ("padding-right", 55, 15, 0);
+		@include adaptiveValue ("padding-bottom", 15, 7, 0);
+		@include adaptiveValue ("padding-left", 55, 15, 0);
 		justify-content: center;
 		align-items: center;
-		@include adaptiveValue ("font-size", 20, 14, 0);
+		@include adaptiveValue ("font-size", 21, 14, 0);
 		line-height: 1.2;
 		letter-spacing: -0.025em;
 		color: #232323;
 		cursor: pointer;
-		font-weight: 700;
+		font-weight: 900;
 	}
 }
 .menu {
@@ -40,22 +44,19 @@
 		justify-content: space-between;
 		li {
 			margin-right: 80px;
-			:last-child {
-				margin-right: 0px;
-			}
 		}
 	}
 	&__link {
 		line-height: 1.2;
 		letter-spacing: -0.025em;
-		color: #232323;
-		font-weight: 400;
-		color: #232323;
+		color: #515155;
+		font-weight: 300;
 		@include adaptiveValue ("font-size", 20, 14, 0);
 	}
 }
 .menu__link:hover {
-	font-weight: 700;
+	font-weight: 900;
+	color: #232323;
 }
 .header__button:hover {
 	box-shadow: 7px 5px 5px rgba(0, 0, 0, 0.4);
@@ -75,7 +76,7 @@
 	.icon-menu {
 			display: block;
 			position: absolute;
-			top: 20%;
+			top: 30%;
 			right: 5%;
 			width: 35px;
 			height: 20px;
@@ -118,38 +119,38 @@
 			transform: rotate(45deg) translate(0px, 50%);
 	}
 	.menu__body{
-				position: fixed;
-				width: 100%;
-				height: 100%;
-				top: 0;
-				left: -100%;
-				overflow: auto;
-				background-color: #fff;
-				padding: 100px 0 20px 0;
-				transition: all 0.3s ease 0s;
-				z-index: 4;
-				::before {
-					content: "";
-					position: fixed;
-					width: 100%;
-					top: 0;
-					left: 0;
-					height: 60px;
-					background-color: #232323;
-					z-index: 3;
-				}
+		position: fixed;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: -100%;
+		overflow: auto;
+		background-color: #fff;
+		padding: 100px 0 20px 0;
+		transition: all 0.3s ease 0s;
+		z-index: 4;
+		::before {
+			content: "";
+			position: fixed;
+			width: 100%;
+			top: 0;
+			left: 0;
+			height: 60px;
+			background-color: #232323;
+			z-index: 3;
+		}
 	}
 	.menu__body._active{
 					left: 0;
 	}
 	.menu__list{
-				display: flex;
-				flex-direction: column;
-				align-items: center;
-				li{
-					margin: 0 0 0 0;
-					padding: 0 0 70px 0;
-				}
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		li{
+			margin: 0 0 0 0;
+			padding: 0 0 70px 0;
+		}
 	}
 	.menu__link{
 		color: #232323;
@@ -166,25 +167,25 @@
 		position: fixed;
 		z-index: 3;
 		&__row {
-		align-items: center;
-		margin-top: 10px;
-		justify-content: flex-start;
+			align-items: center;
+			padding-top: 10px;
+			padding-bottom: 10px;
+			justify-content: flex-start;
+		}
+		&__contact {
+			z-index: 10;
+			justify-content: flex-start;
+			order: 1;
+		}
+		&__button {
+			position: relative;
+			border: 3px solid #fff;
+			color: #fff;
+			font-weight: 400;
+		}
 	}
-	&__contact {
-		z-index: 10;
-		justify-content: flex-start;
-		order: 1;
-	}
-	&__button {
-		position: relative;
-		border: 3px solid #fff;
-		color: #fff;
-		font-weight: 400;
-	}
-}
 }
 
-//Mobile 
 
 
 

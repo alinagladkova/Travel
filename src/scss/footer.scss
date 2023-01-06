@@ -20,24 +20,21 @@
 		letter-spacing: -0.025em;
 		color: #232323;
 	}
-	&__links-block {
+	&__quick-links {
 		flex: 0 1 70.7%;
 	}
 	&__rights {
 		text-align: center;
 		color: #232323;
-		@include adaptiveValue ("font-size", 16, 14, 0);
+		@include adaptiveValue ("font-size", 21, 14, 0);
 		@include adaptiveValue ("padding-top", 128, 40, 0);
 		@include adaptiveValue ("padding-bottom", 118, 40, 0);
-		letter-spacing: 0.02em;
+		line-height: 50px;
+		font-weight: 400;
+		letter-spacing: -0.025em;
 	}
 }
-.footer__rights:before {
-	background: url('../img/Scribble-Dark.svg');
-	position: absolute;
-	bottom: 0;
-	left: 0;
-} 
+
 .quick-links {
 	&__title {
 		@include adaptiveValue ("font-size", 25, 18, 0);
@@ -47,21 +44,20 @@
 		color: #232323;
 	}
 	&__table {
-		display: flex;
-		justify-content: space-between;
 		@include adaptiveValue ("margin-top", 30, 5, 0);
+		display: inline-grid;
+		grid-template-columns: 1fr 1fr 1fr 1fr;
+		grid-template-rows: 1fr 1fr 1fr;
+		align-content: space-between;
+		@include adaptiveValue ("gap", 35, 15, 0);
+		width: 100%;
 	}
 	&__column {
-		display: flex;
-		flex-direction: column;
 	}
 	&__link {
-		@include adaptiveValue ("font-size", 20, 14, 0);
-		line-height: 50px;
-		font-weight: 400;
+		@include adaptiveValue ("font-size", 21, 14, 0);
 		letter-spacing: -0.025em;
 		color: #232323;
-		@include adaptiveValue ("margin-top", 25, 10, 0);
 	}
 }
 .quick-links__link:hover {
@@ -69,39 +65,26 @@
 }
 
 //Адаптив
-@media (max-width: 750px) {
-	.footer {
-		&__row {
-			flex-direction: column;
-		}
-	}
-}
-@media (max-width: 540px) {
+@media (max-width: 650px) {
 	.footer {
 		background: #c4c4c4;
 	}
-
+	.quick-links__table {
+		grid-template-columns: 1fr 1fr 1fr;
+	}
 }
 @media (max-width: 500px) {
 	.quick-links {
-		&__column1 {
-			display: none;
-		}
-		&__column2 li:nth-child(2) {
-			display: none;
-		}
-		&__column3 li:nth-child(2) {
-			display: none;
-		}
-		&__column4 li:last-child {
-			display: none;
+		&__table {
+			grid-template-columns: 1fr 1fr;
 		}
 	}
-}
-@media (max-width: 350px) {
-	.quick-links {
-		&__table {
-			flex-wrap: wrap;
+	.footer {
+		&__row {
+			display: block;
+		}
+		&__logo {
+			display: none;
 		}
 	}
 }

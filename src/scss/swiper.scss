@@ -24,15 +24,13 @@
 		text-align: center;
 		@include adaptiveValue ("height", 776, 476, 0);
 		@include adaptiveValue ("width", 564, 264, 0);
-		//width: 564px;
-		//height: 776px;
 		img {
 			max-width: 100%;
 		}
 	}
 	&__description {
 		display: flex;
-	flex-direction: column;
+		flex-direction: column;
 	}
 }
 .description {
@@ -44,8 +42,6 @@
 	@include adaptiveValue ("margin-bottom", 78, 38, 0);
 	@include adaptiveValue ("height", 322, 22, 0);
 	@include adaptiveValue ("width", 418, 118, 0);
-	//width: 418px;
-	//height: 322px;
 		img {
 			max-width: 100%;
 		}
